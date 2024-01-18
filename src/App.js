@@ -84,7 +84,7 @@ const App = () => {
   const fetchResponseFromLLM = async (text) => {
     try {
       const response = await fetch(
-        `https://c3-python-nostream.onrender.com/api/chat`,
+        `https://pikto-voice-assistant-backend.onrender.com/api/chat`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -145,7 +145,7 @@ const App = () => {
   return (
     <div className="container">
       <div class="app-header">
-          <h1>C3 AI</h1>
+          <h1>Pikto AI</h1>
           <p class="app-subtext">
             Ask me anything, or get specific insights from the Nvidia FY 2023 10K
             report.
@@ -195,7 +195,7 @@ const App = () => {
       </button>
       <footer className="app-footer">
         Created by{" "}
-        <a href="https://www.linkedin.com/in/harshadsuryawanshi/">Harshad Suryawanshi</a>
+        <a href="https://www.linkedin.com/in/vincentsider/">Vincent Sider</a>
       </footer>
     </div>
   );
