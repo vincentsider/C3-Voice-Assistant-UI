@@ -84,7 +84,7 @@ const App = () => {
   const fetchResponseFromLLM = async (text) => {
     try {
       const response = await fetch(
-        `https://pikto-voice-assistant-backend.onrender.com/api/chat`,
+        `https://piktocare.onrender.com/api/chat`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
