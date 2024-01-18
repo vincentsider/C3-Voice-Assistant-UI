@@ -34,11 +34,13 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Wake word listener setup
-    const WakeWordSpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (WakeWordSpeechRecognition && !wakeWordRecognitionRef.current) {
-      wakeWordRecognitionRef.current = new WakeWordSpeechRecognition();
+    // Check if speech recognition is available
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    // Initialize wake word listener if not already initialized
+    if (!wakeWordRecognitionRef.current) {
+      wakeWordRecognitionRef.current = new SpeechRecognition();
       wakeWordRecognitionRef.current.continuous = true;
       wakeWordRecognitionRef.current.interimResults = false;
 
@@ -58,7 +60,8 @@ const App = () => {
     // Main speech recognition setup
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition && !recognitionRef.current) {
+    // Initialize main speech recognition if not already initialized
+    if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.interimResults = false;
