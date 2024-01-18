@@ -57,9 +57,6 @@ const App = () => {
       wakeWordRecognitionRef.current.start();
     }
 
-    // Main speech recognition setup
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
     // Initialize main speech recognition if not already initialized
     if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
