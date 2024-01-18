@@ -34,13 +34,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Check if speech recognition is available
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return;
-
-    // Initialize wake word listener if not already initialized
-    if (!wakeWordRecognitionRef.current) {
-      wakeWordRecognitionRef.current = new SpeechRecognition();
+    // Wake word listener setup
+    const WakeWordSpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (WakeWordSpeechRecognition && !wakeWordRecognitionRef.current) {
+      wakeWordRecognitionRef.current = new WakeWordSpeechRecognition();
       wakeWordRecognitionRef.current.continuous = true;
       wakeWordRecognitionRef.current.interimResults = false;
 
@@ -57,8 +55,10 @@ const App = () => {
       wakeWordRecognitionRef.current.start();
     }
 
-    // Initialize main speech recognition if not already initialized
-    if (!recognitionRef.current) {
+    // Main speech recognition setup
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition && !recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.interimResults = false;
@@ -145,7 +145,7 @@ const App = () => {
   return (
     <div className="container">
       <div class="app-header">
-          <h1>Pikto AI</h1>
+          <h1>C3 AI</h1>
           <p class="app-subtext">
             Ask me anything, or get specific insights from the Nvidia FY 2023 10K
             report.
